@@ -1,38 +1,72 @@
+// ===============================
+// SERVICE WORKER COMPLETO OFFLINE
+// ===============================
 
-const request = indexedDB.open("BaseDatos", 1);
+const CACHE_NAME = "cache-app-v3";
 
-let db;
+const FILES_TO_CACHE = [
+  "index.html",
+  "indice.html",
+  "pag2.html",
 
-request.onupgradeneeded = function (event) {
-  db = event.target.result;
+  "fst.html",
+  "fst2.html",
+  "fst3.html",
+  "fst4.html",
+  "fst5.html",
+  "fst6.html",
+  "fst7.html",
 
-  if (!db.objectStoreNames.contains("usuarios")) {
-    db.createObjectStore("usuarios", { keyPath: "id", autoIncrement: true });
-  }
-};
+  "BD.js",
+  "BsD.js",
+  "qwer.js",
 
-request.onsuccess = function (event) {
-  db = event.target.result;
-  console.log("Base lista.");
-};
+  "style.css",
+  "style3.css"
+];
 
-request.onerror = function (event) {
-  console.error("Error:", event.target.error);
-};
+// =====================================
+// INSTALACIÓN: Guardar archivos en caché
+// =====================================
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
+  );
 
-function guardarDatos() {
-  const nombre = document.getElementById("nombre").value;
-  const contraseña = document.getElementById("contraseña").value;
-  const año = document.getElementById("año").value;
+  self.skipWaiting();
+});
 
-  const tx = db.transaction("usuarios", "readwrite");
-  const store = tx.objectStore("usuarios");
+// =====================================
+// ACTIVACIÓN: Limpiar cachés viejas
+// =====================================
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(
+        keyList.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
 
-  const nuevoRegistro = { nombre, contraseña, año };
-  store.add(nuevoRegistro);
+  self.clients.claim();
+});
 
-  tx.oncomplete = () => console.log("Datos guardados.");
-  tx.onerror = () => console.log("Error al guardar.");
-}
-
-document.getElementById("btnGuardar").addEventListener("click", guardarDatos);
+// =====================================
+// FETCH con fallback
+// - Si hay caché: usa caché
+// - Si hay internet: usa red
+// - Si falla todo: regresa index.html
+// =====================================
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then((cached) => {
+        return cached || fetch(event.request);
+      })
+      .catch(() => caches.match("index.html"))
+  );
+});

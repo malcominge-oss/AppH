@@ -34,6 +34,14 @@
         <a href="fst2.html" class="titulo">siguiente</a>
     </div>
 
+    <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("Service Worker registrado"))
+      .catch(err => console.error("Error registrando SW:", err));
+  }
+  </script>
+
     
     
 </body>

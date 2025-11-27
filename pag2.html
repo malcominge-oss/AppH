@@ -18,7 +18,13 @@
 
   <br>
   <button id="btnVolver">Volver</button>
-
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("Service Worker registrado"))
+      .catch(err => console.error("Error registrando SW:", err));
+  }
+  </script>
   <script src="qwer.js"></script>
 </body>
 </html>

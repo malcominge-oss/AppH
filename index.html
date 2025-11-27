@@ -36,10 +36,19 @@
 
   <script src="BD.js"></script>
   <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("Service Worker registrado"))
+      .catch(err => console.error("Error registrando SW:", err));
+  }
+  </script>
+
+  <script>
     document.getElementById("btnIrLista").addEventListener("click", () => {
-      window.location.href = "pag2.html";
+      window.location.href = "./pag2.html";
     });
   </script>
+
 </body>
 </html>
 

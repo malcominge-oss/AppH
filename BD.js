@@ -121,7 +121,7 @@ async function init() {
   btn.addEventListener("click", guardarDatos);
 
   btnIr.addEventListener("click", () => {
-    window.location.href = "pag2.html";
+    window.location.href = "./pag2.html";
   });
 }
 
@@ -161,7 +161,7 @@ document.getElementById("btnLogin").addEventListener("click", async () => {
 
     if (acceso) {
       console.log("Acceso concedido.");
-      window.location.href = "indice.html";
+      window.location.href = "./indice.html";
     } else {
       alert("Datos incorrectos.");
     }
