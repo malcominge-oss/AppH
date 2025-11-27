@@ -1,6 +1,7 @@
 body{
-    background: #0d0609;
-    background: radial-gradient(circle,rgba(13, 6, 9, 1) 0%, rgba(148, 188, 235, 1) 100%);
+
+    background: radial-gradient(rgb(110, 143, 181) 100%);
+
 }
 .titulo{
     font-size: 20px;

@@ -9,36 +9,27 @@
 <body>
     <p class="titulo center">Tutorial Aplicaciones Moviles</p>
     <div class="dib1 center pf">
-        <p>Gestion de Sensores</p>
+        <p class="titulo">Servicios y Notificaciones en App</p>
         <p class="pf">
-            <ul>
-                <li><strong>Magnetómetro:</strong><br>
-                    Mide el campo magnético terrestre.<br>
-                <strong>Usos comunes:</strong> Funciona como una brújula, proporcionando la dirección hacia el norte, útil en aplicaciones de navegación.
-                </li>
-                <li><strong>Sensor de huellas dactilares:</strong><br>
-                    Escanea las huellas digitales para proporcionar seguridad biométrica.<br>
-                    <strong>Usos comunes:</strong> Desbloqueo del dispositivo y autenticación en aplicaciones.
-                </li>
-                <li><strong>Sensor de temperatura:</strong><br>
-                    Mide la temperatura interna o externa del dispositivo.<br>
-                    <strong>Usos comunes:</strong> Monitorea el calor generado por el dispositivo para evitar el sobrecalentamiento.
-                </li>
-                </ul>
-                <p><strong>2.Método para Identificar Sensores en un Dispositivo Móvil:</strong></p>
-                <ul>
-                <li><strong>Consulta las especificaciones del dispositivo:</strong> La documentación técnica o las especificaciones de un dispositivo móvil generalmente mencionan los sensores que incluye. Si no están listados, se puede buscar en la web del fabricante.</li>
-
-                <li><strong>Aplicaciones de diagnóstico:</strong> Hay aplicaciones disponibles en la tienda de aplicaciones que permiten acceder a la información sobre los sensores de un dispositivo. Ejemplos incluyen Sensor Box y AndroSensor (en Android).</li>
-
-                <li><strong>Exploración en código:</strong> Si estás desarrollando una aplicación, puedes usar las APIs de Android (como SensorManager en Android) o de iOS para listar los sensores disponibles en el dispositivo.</li>
-                </ul>
+            Una vez que conoces que son los Sensores de dispositivos moviles, ahora conoceras sobre los Servicios y las Notificaciones
         </p>
+    <p><strong>Cómo se implementan:</strong> Se gestionan mediante Servicios en Android o Background Fetch en iOS, permitiendo ejecutar código cuando la app está cerrada o minimizada.</p>
+
+    <p class="pft">Tratamiento de notificaciones en aplicaciones móviles</p>
+    <p>Las notificaciones informan a los usuarios de eventos importantes, incluso cuando no están usando la app.</p>
+    <p><strong>Notificaciones locales:</strong> Se disparan dentro de la app sin servidor. <strong>Notificaciones push:</strong> Se envían desde un servidor para actualizaciones remotas.</p>
+    <p><strong>Cómo se gestionan:</strong> Se configura un Receiver (Android) o Delegate (iOS) para recibir y mostrar las notificaciones.</p>
+
+    <p class="pft">Implementación de proveedores de contenido, tareas en segundo plano y notificaciones</p>
+    <p><strong>Proveedores de contenido:</strong> Permiten compartir datos entre aplicaciones, implementados mediante Content Providers (Android) o App Groups (iOS).</p>
+    <p><strong>Tareas en segundo plano:</strong> Gestionadas con Servicios o tareas programadas para funcionar sin la interacción del usuario.</p>
+    <p><strong>Notificaciones:</strong> Se combinan con servicios en segundo plano para notificar al usuario en momentos específicos, como cuando se actualizan los datos.</p>
+
     </div>
     <div class="dib2 center">
         <a href="fst.html">Anterior</a>
         <a href="indice.html">Indice</a>
-        <a href="">Siguiente</a>
+        <a href="fst3.html">Siguiente</a>
         
 
     </div>
