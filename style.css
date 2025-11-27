@@ -1,0 +1,36 @@
+body{
+    background: #0d0609;
+    background: radial-gradient(circle,rgba(13, 6, 9, 1) 0%, rgba(148, 188, 235, 1) 100%);
+}
+.titulo{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.dib1{
+    border-radius: 30px;
+    background: #78797d;
+    background: radial-gradient(circle,rgba(120, 121, 125, 1) 0%, rgba(189, 189, 189, 1) 100%);
+    border: 1px solid black;
+    height: 400px;
+    width:100%;
+    
+}
+.dib2{
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.center{
+    
+    text-align: center;
+    
+}
+.diboc{
+    position: relative;
+    top: -30px;
+    left: 65%;
+}
