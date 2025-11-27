@@ -8,16 +8,20 @@
   
 </head>
 <body>
-  <h1>Usuarios guardados</h1>
+
+  <div class="dib1">
+    <p class="titulo center">Base de Datos</p>
+    <div class="dib3">
   <table id="tabla">
     <thead>
-      <tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>Edad</th><th>Acciones</th></tr>
+      <tr><th>ID</th><th>Nombre</th><th>Contraseña</th><th>Correo</th><th>Acciones</th></tr>
     </thead>
     <tbody></tbody>
   </table>
+  <br></div>
 
-  <br>
-  <button id="btnVolver">Volver</button>
+  <button id="btnVolver" class="titulo volver">Volver</button>
+  </div>
   <script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js")

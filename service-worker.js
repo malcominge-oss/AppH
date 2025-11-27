@@ -17,10 +17,12 @@ const FILES_TO_CACHE = [
   "fst6.html",
   "fst7.html",
 
-  "BD.js",
-  "BsD.js",
-  "qwer.js",
+  "wordpress-debug-1024x512.png",
+  "google-play.png",
+  "programing.png",
+  "sensores.jpeg",
 
+  "qwer.js",
   "style.css",
   "style3.css"
 ];

@@ -1,5 +1,5 @@
 body{
-    background: radial-gradient(rgb(110, 143, 181) 100%);
+    background: radial-gradient(#F52749 100%);
 }
 .titulo{
     font-size: 15px;
@@ -12,14 +12,14 @@ body{
 }
 .dib1{
     background: radial-gradient(rgb(183, 197, 212) 100%);
-    border: 1px solid black;
+    
     border-radius: 30px;
-    height: 630px;
+    height: 710px;
     width: 100%;
 }
 .dib2{
+
     background: radial-gradient(rgb(183, 197, 212) 100%);
-    border: 1px solid black;
     border-radius: 30px;
     position: relative;
     height: 50px;
@@ -27,12 +27,26 @@ body{
     top: 10px;
     left: 20px;
 }
-
+.rectangulo{
+    
+    height: 120px;
+    width: 120px;
+    position: relative;
+    left: 100px;
+}
+.imgn{
+    width: 120px;
+    height: 120px;
+}
+.imgn2{
+    height: 90px;
+    width: 90px;
+}
 .pf{
     font-size: 12px;
 }
 a{
-    border: 1px solid black;
+    
     border-radius: 20px;
     padding: 1px;
     position: relative;

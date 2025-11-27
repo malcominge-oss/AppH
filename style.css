@@ -1,6 +1,6 @@
 body{
 
-    background: radial-gradient(rgb(110, 143, 181) 100%);
+    background: radial-gradient(#F52749 100%);
 
 }
 .titulo{
@@ -12,19 +12,26 @@ body{
     border-radius: 30px;
     background: #78797d;
     background: radial-gradient(circle,rgba(120, 121, 125, 1) 0%, rgba(189, 189, 189, 1) 100%);
-    border: 1px solid black;
+    
     height: 400px;
     width:100%;
     
 }
 .dib2{
-    border: 1px solid black;
+    
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
-
+.dib3{
+    padding: 25px;
+    margin: 10px;
+}
+.volver{
+    position: relative;
+    left: 130px;
+}
 .center{
     
     text-align: center;
