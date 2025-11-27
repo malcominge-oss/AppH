@@ -1,16 +1,9 @@
-// =========================================
-// CONFIGURACIÓN PRINCIPAL DE LA BASE
-// =========================================
+
 const DB_NAME = "BaseDatos";
 const DB_VERSION = 2; 
 const STORE_NAME = "usuarios";
 
 let db = null;
-
-// =========================================
-// APERTURA ÚNICA DE LA BASE DE DATOS
-// Compatible con navegador y app híbrida
-// =========================================
 
 function openDB() {
   return new Promise((resolve, reject) => {
@@ -38,17 +31,13 @@ function openDB() {
   });
 }
 
-// Para app híbrida (Cordova/Capacitor)
+
 document.addEventListener("deviceready", () => {
   openDB();
 });
 
-// También funciona en navegador
 openDB();
 
-// =========================================
-// CONVERTIR REQUEST A PROMISE
-// =========================================
 function requestToPromise(request) {
   return new Promise((resolve, reject) => {
     request.onsuccess = (e) => resolve(e.target.result);
@@ -56,9 +45,7 @@ function requestToPromise(request) {
   });
 }
 
-// =========================================
-// GUARDAR DATOS EN LA BASE DE DATOS
-// =========================================
+
 async function guardarDatos() {
   try {
     const campo1 = document.getElementById("campo1").value.trim();
@@ -102,9 +89,7 @@ async function guardarDatos() {
   }
 }
 
-// =========================================
-// INICIALIZACIÓN DE BOTONES
-// =========================================
+
 async function init() {
   const btn = document.getElementById("btnGuardar");
   const btnIr = document.getElementById("btnIrLista");
@@ -125,9 +110,7 @@ async function init() {
   });
 }
 
-// =========================================
-// FUNCIÓN PARA VERIFICAR LOGIN
-// =========================================
+
 async function verificarLogin(c1, c2, c3) {
   try {
     const database = await openDB();
@@ -171,9 +154,7 @@ document.getElementById("btnLogin").addEventListener("click", async () => {
   }
 });
 
-// =========================================
-// FUNCIÓN PARA ACTUALIZAR DATOS (OPCIONAL)
-// =========================================
+
 function actualizarDatos() {
   return new Promise(async (resolve, reject) => {
     try {
@@ -199,7 +180,4 @@ function actualizarDatos() {
   });
 }
 
-// =========================================
-// EJECUTAR INIT
-// =========================================
 init();

@@ -1,13 +1,11 @@
-/************ qwer.js — versión corregida ************/
-/* Usa la misma base que BD.js: "BaseDatos", versión 2 */
+
 const DB_NAME = "BaseDatos";
 const DB_VERSION = 2;
 const STORE_NAME = "usuarios";
 
-/* Guardamos la conexión para reusar si ya está abierta */
 let _db = null;
 
-/* openDB: abre la DB (o devuelve la conexión ya abierta) */
+
 function openDB() {
   if (_db) return Promise.resolve(_db);
 
@@ -24,7 +22,7 @@ function openDB() {
 
     req.onsuccess = (e) => {
       _db = e.target.result;
-      // Si la conexión se cierra por cualquier motivo, limpiamos la referencia
+      
       _db.onclose = () => { _db = null; };
       _db.onversionchange = () => {
         try { _db.close(); } catch (_) {}
@@ -40,7 +38,7 @@ function openDB() {
   });
 }
 
-/* Helper: request -> Promise */
+
 function requestToPromise(request) {
   return new Promise((resolve, reject) => {
     request.onsuccess = (evt) => resolve(evt.target.result);
@@ -48,7 +46,7 @@ function requestToPromise(request) {
   });
 }
 
-/* Obtener todos los usuarios (promesa) */
+
 async function getAllUsuarios() {
   const db = await openDB();
   const tx = db.transaction(STORE_NAME, "readonly");
@@ -57,7 +55,7 @@ async function getAllUsuarios() {
   return requestToPromise(req);
 }
 
-/* Borrar usuario por id (espera a que termine la transacción) */
+
 async function borrarUsuarioPorId(id) {
   const db = await openDB();
   const tx = db.transaction(STORE_NAME, "readwrite");
@@ -66,7 +64,7 @@ async function borrarUsuarioPorId(id) {
   const req = store.delete(id);
   await requestToPromise(req);
 
-  // esperar a que la transacción complete para seguridad en móviles
+ 
   await new Promise((resolve, reject) => {
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
@@ -74,7 +72,7 @@ async function borrarUsuarioPorId(id) {
   });
 }
 
-/* Cargar y renderizar usuarios en la tabla */
+
 async function cargarUsuarios() {
   try {
     const usuarios = await getAllUsuarios();
@@ -105,7 +103,7 @@ async function cargarUsuarios() {
       tbody.appendChild(tr);
     }
 
-    // Delegación de evento (se remueve antes para evitar duplicados)
+    
     tbody.removeEventListener("click", onTablaClick);
     tbody.addEventListener("click", onTablaClick);
 
@@ -114,7 +112,7 @@ async function cargarUsuarios() {
   }
 }
 
-/* Manejador delegado para clicks en la tabla */
+
 async function onTablaClick(e) {
   const target = e.target;
   if (target.classList && target.classList.contains("btnBorrar")) {
@@ -124,7 +122,7 @@ async function onTablaClick(e) {
 
     try {
       await borrarUsuarioPorId(id);
-      // recargar tabla
+      
       await cargarUsuarios();
     } catch (err) {
       console.error("Error borrando usuario:", err);
@@ -133,7 +131,7 @@ async function onTablaClick(e) {
   }
 }
 
-/* Botón volver */
+
 const btnVolver = document.getElementById("btnVolver");
 if (btnVolver) {
   btnVolver.addEventListener("click", () => {
@@ -141,9 +139,9 @@ if (btnVolver) {
   });
 }
 
-/* Inicialización segura: abrir DB cuando WebView esté listo en apps híbridas */
+
 function initQwer() {
-  // En apps híbridas esperamos deviceready si existe
+  
   if (window.cordova || window.Capacitor) {
     document.addEventListener("deviceready", async () => {
       try {
@@ -154,12 +152,12 @@ function initQwer() {
       }
     }, { once: true });
   } else {
-    // navegador normal
+    
     openDB().then(() => cargarUsuarios()).catch(err => {
       console.error("No se pudo abrir DB (navegador):", err);
     });
   }
 }
 
-/* Ejecutar init */
+
 initQwer();
